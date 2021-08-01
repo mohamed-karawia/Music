@@ -1,0 +1,80 @@
+@import '../../sass/global.scss';
+
+.Plan{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 30rem;
+    width: 100%;
+
+    @media only screen and (max-width: 620px) {
+        margin-bottom: 4rem;
+    }
+
+    &__heading{
+        font-size: 3rem;
+        text-transform: uppercase;
+    }
+
+    &__period{
+        font-size: 1.5rem;
+        font-weight: 200;
+        margin: .5rem 0;
+    }
+
+    &__details{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem 3rem;
+        position: relative;
+        @include shadow;
+        max-width: 18rem;
+        height: 100%;
+
+    @media only screen and (max-width: 620px) {
+        max-width: none;
+        width: 100%;
+        align-items: center;
+        height: 30rem;
+        justify-content: space-around;
+        padding: 4rem 0;
+    }
+
+        p{
+            font-size: 1.3rem;
+            text-transform: capitalize;
+            margin-top: 1rem;
+
+            @media only screen and (max-width: 620px) {
+                font-size: 2rem;
+            }
+        }
+
+        button{
+            align-self: center;
+            position: absolute;
+            top: 90%;
+            border: none;
+            background-color: black;
+            color: white;
+            padding: 1rem 2rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all .2s;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+
+        .pro{
+            background-image: linear-gradient(to right, $purple, rgb(33, 119, 218));
+            transition: all .2s;
+
+            &:hover{
+                background-image:  linear-gradient(to right, $purple, $purple);
+            }
+        }
+    }
+}

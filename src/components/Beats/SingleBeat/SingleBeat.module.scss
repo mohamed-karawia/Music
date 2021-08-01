@@ -1,0 +1,51 @@
+.Beat {
+    /*width: 19.1rem;
+    height: 24.3rem;*/
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    -webkit-box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.47);
+    -moz-box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.47);
+    box-shadow: 4px 4px 10px 0px rgba(50, 50, 50, 0.47);
+    border-radius: 1rem;
+    cursor: pointer;
+
+    &__img {
+        width: 100%;
+        min-height: 19rem;
+        padding: .7rem;
+
+        @media only screen and (max-width: 600px){
+            height: 8rem;
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-position: center;
+            object-fit: cover;
+
+            
+        }
+    }
+
+    &__details {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: .2rem 0;
+
+        h3 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            margin-bottom: .5rem;
+            text-align: center;
+        }
+    }
+}

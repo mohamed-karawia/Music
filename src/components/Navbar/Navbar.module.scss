@@ -1,0 +1,86 @@
+@import '../../sass/global.scss';
+
+.Navbar {
+    background-color: transparent;
+    height: 5rem;
+    color: white;
+    display: flex;
+    letter-spacing: 2px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+
+    &>* {
+        display: flex;
+        align-items: center;
+    }
+
+    &>*:nth-child(1),
+    &>*:nth-child(3) {
+        flex: 1;
+    }
+
+    &>*:nth-child(2) {
+        flex: 3;
+        justify-content: start;
+        padding: 0 1rem;
+
+        &>* {
+            margin-right: 3rem;
+        }
+    }
+
+    &__logo {
+        font-size: 2rem;
+        justify-content: center;
+        @media only screen and (max-width: 1182px){
+            margin-right: 2rem;
+         }
+    }
+
+    &__list {
+        list-style: none;
+        justify-content: space-evenly;
+        
+
+        &__item {
+
+
+            a {
+                color: white;
+                font-size: 1.4rem;
+                text-decoration: none;
+                text-transform: uppercase;
+                font-weight: 500;
+            }
+        }
+    }
+
+    &__auth {
+        justify-content: space-evenly;
+
+        @media only screen and (max-width: 1182px){
+            display: none;
+        }
+
+        & > *{
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 400;
+            cursor: pointer;
+        }
+
+        &__login {
+            background-color: transparent;
+            color: white;
+            font-size: 1.6rem;
+            border: none;
+        }
+
+        &__signup{
+            @include signup;
+        }   
+    }
+}

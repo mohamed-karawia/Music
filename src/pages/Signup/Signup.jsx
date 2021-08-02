@@ -4,9 +4,13 @@ import { Link } from 'react-router-dom';
 import classes from './Signup.module.scss';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
+// react-router
+import { useHistory } from 'react-router';
 // Actions
 import * as actions from '../../store/actions';
 import Spinner from '../../components/Spinner/Spinner';
+// Icons
+import { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
 
 const Signup = () => {
     const [fname, setFname] = useState('');
@@ -18,6 +22,7 @@ const Signup = () => {
     const loading = useSelector(state => state.auth.loading);
     const error = useSelector(state => state.auth.error);
     const dispatch = useDispatch();
+    const history = useHistory();
     const registerUser = (e) => {
         e.preventDefault();
         const data = {
@@ -30,10 +35,16 @@ const Signup = () => {
         }
         dispatch(actions.registerUser(data))
     }
+    const goBack = () => {
+        history.goBack()
+    }
 
     return (
         <div className={classes.Signup}>
             <div className={classes.Signup__form}>
+                <div className={classes.Signup__form__back} onClick={goBack}>
+                    <FaArrowLeft />
+                </div>
                 <h2>Sign up</h2>
                 <form className={classes.Signup__form__elements} onSubmit={(event) => registerUser(event)}>
                     <div className={`${classes.form__group} ${classes.field}`}>

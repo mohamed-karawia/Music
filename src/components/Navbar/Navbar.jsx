@@ -5,6 +5,8 @@ import { Link, useHistory } from 'react-router-dom';
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions';
+// Logo
+import Logo from '../../assets/logo.png'
 
 const Navbar = () => {
     const history = useHistory();
@@ -25,7 +27,7 @@ const Navbar = () => {
     return (
         <nav className={classes.Navbar}>
             <div className={classes.Navbar__logo}>
-                <h1>LOGO</h1>
+                <img src={Logo} alt="logo" />
             </div>
             <ul className={classes.Navbar__list}>
                 <li className={classes.Navbar__list__item}><Link to="/">Home</Link></li>

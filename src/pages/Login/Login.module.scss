@@ -11,9 +11,20 @@
 
 
     &__form {
-        padding: 6rem 4rem;
+        padding: 4rem 4rem;
         display: flex;
         flex-direction: column;
+
+        &__back{
+            margin-bottom: 2rem;
+            cursor: pointer;
+            
+            svg {
+                fill: $purple;
+                width: 4rem;
+                height: 4rem;
+            }
+        }
 
         &__elements {
             display: grid;

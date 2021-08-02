@@ -13,7 +13,7 @@ import axios from 'axios';
 import * as actions from './store/actions';
 import {useDispatch, useSelector} from 'react-redux';
 
-axios.defaults.baseURL = 'https://beats-for-minds.herokuapp.com';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +23,14 @@ function App() {
   }, [dispatch])
 
   const isAuth = useSelector(state => state.auth.token !== null);
+  const token = useSelector(state => state.auth.token)
+
+  axios.defaults.baseURL = 'https://beats-for-minds.herokuapp.com';
+  if (token){
+    axios.defaults.headers.common['Authorization'] = `auth ${token}`;
+
+  }
+
   let routes = (
     <Switch>
         <Route path="/beats" component={Beats}></Route>
@@ -37,8 +45,7 @@ function App() {
       <Switch>
       <Route path="/beats" component={Beats}></Route>
       <Route path="/membership" component={Membership}></Route>
-      <Route path="/" component={Home}></Route>
-      <Redirect to="/" />
+      <Redirect to="/beats?tab=home" />
     </Switch>
     )
   }

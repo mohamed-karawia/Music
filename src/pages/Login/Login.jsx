@@ -6,13 +6,18 @@ import classes from './Login.module.scss';
 import * as actions from '../../store/actions'
 // Redux
 import { useDispatch, useSelector } from 'react-redux';
+// react-router
+import { useHistory } from 'react-router';
 // Components
 import Spinner from '../../components/Spinner/Spinner';
+// Icons
+import { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
 
-const Signup = () => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
     const loading = useSelector(state => state.auth.loading);
     const error = useSelector(state => state.auth.error);
     const loginLocal = (event) => {
@@ -24,9 +29,16 @@ const Signup = () => {
         dispatch(actions.loginLocal(data))
     }
 
+    const goBack = () => {
+        history.goBack()
+    }
+
     return (
         <div className={classes.Signup}>
             <div className={classes.Signup__form}>
+                <div className={classes.Signup__form__back} onClick={goBack}>
+                    <FaArrowLeft />
+                </div>
                 <h2>Login</h2>
                 <form className={classes.Signup__form__elements} onSubmit={(event) => loginLocal(event)}>
                     <div className={`${classes.form__group} ${classes.field}`}>
@@ -62,4 +74,4 @@ const Signup = () => {
     )
 }
 
-export default Signup
+export default Login

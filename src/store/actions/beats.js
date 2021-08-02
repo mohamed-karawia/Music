@@ -20,7 +20,11 @@ export const getBeatsSuccess = (data) => {
 export const getBeats = (queries) => {
     return dispatch => {
         dispatch(getBeatsStart())
-        axios.get(`/music?page=${1}&sort=1&tap=${queries.tab}`)
+        let link = `/music?page=${1}&sort=1&tap=${queries.tab}`
+        if(queries.search){
+            link = `/music?page=${1}&sort=1&tap=${queries.tab}&searchQ=${queries.search}`
+        }
+        axios.get(link)
         .then(res => {
             dispatch(getBeatsSuccess(res.data.data))
             console.log(res)
@@ -29,4 +33,18 @@ export const getBeats = (queries) => {
             console.log(err.response)
         })
     }
+}
+
+export const setFav = (id) => {
+    return dispatch => {
+        axios.put('/music/favourits', {
+        beetId: id
+    })
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err.response)
+    })
+}
 }

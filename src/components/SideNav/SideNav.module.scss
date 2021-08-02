@@ -1,66 +1,69 @@
 @import '../../sass/global.scss';
 
-.SideNav{
+.SideNav {
     min-height: 100vh;
     background-color: $dark-purple;
     transition: .3s all;
-    padding: 1rem .6rem;
+    padding: 1rem 0;
 
-    @media only screen and (max-width: 600px){
+    @media only screen and (max-width: 600px) {
         position: fixed;
         top: 0;
         left: -999px;
         z-index: 999;
     }
 
-   
 
-    &__logo{
+
+    &__logo {
         width: 100%;
         display: flex;
         justify-content: center;
         margin-bottom: 2rem;
         cursor: pointer;
 
-        img{
+        img {
             max-width: 7rem;
         }
 
     }
 
-    &__list{
+    &__list {
         list-style: none;
 
-        & > * {
+        &>* {
             margin-bottom: 2rem;
         }
 
-        &__item{
+        &__item {
             display: flex;
             justify-content: center;
             align-items: center;
             margin-bottom: 3rem;
+            padding: .5rem .6rem;
 
-            .link{
+
+            .link {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 cursor: pointer;
             }
 
-            &__icon{
+            &__icon {
                 fill: white;
                 width: 4rem;
                 height: 4rem;
                 margin-bottom: 1rem;
             }
 
-            h2{
+            h2 {
                 color: white;
             }
 
-            a,h2 {
-                
+            a,
+            h2 {
+
                 display: flex;
                 align-items: center;
                 flex-direction: column;
@@ -75,4 +78,16 @@
 
 .open {
     left: 0
+}
+
+.active {
+    background-color: white;
+
+    .SideNav__list__item__icon {
+        fill: $dark-purple !important;
+    }
+
+    h2 {
+        color: $dark-purple !important;
+    }
 }

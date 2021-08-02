@@ -6,7 +6,7 @@ const BeatsList = (props) => {
     return (
         <ul className={classes.List}>
             {props.beats.map(beat => (
-                <li><SingleBeat key={beat._id} onPlayBeat={props.onPlayBeat} beat={beat} /></li>
+                <li><SingleBeat key={beat._id} setFav={props.setFav} onPlayBeat={props.onPlayBeat} beat={beat} /></li>
             ))}
         </ul>
     )

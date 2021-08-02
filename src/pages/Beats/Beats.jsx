@@ -27,12 +27,14 @@ import { FaFacebookF } from "@react-icons/all-files/fa/FaFacebookF";
 
 import ReactJkMusicPlayer from 'react-jinke-music-player'
 import 'react-jinke-music-player/assets/index.css'
+import BeatsPlayer from '../../components/BeatsPlayer/BeatsPlayer';
 
 
 
 const Beats = () => {
     const [isNavOpen, setIsNavOpen] = useState(false);
     const [playList, setPlayList] = useState([]);
+    const [searchTerm, setSearchTerm] = useState([])
     const { search } = useLocation();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -61,24 +63,41 @@ const Beats = () => {
             history.replace(`/beats?tab=${tab}`)
             setQueries({ ...queries, tab })
         }
+    }
 
+    const changeSearch = (value) => {
+        history.replace(`/beats?tab=${'home'}`)
+        setTimeout(() => {
+            setQueries({ ...queries, search: value, tab: 'home' })
+        }, 1000)
     }
 
     const onPlayBeat = (beat) => {
-        if(isNavOpen){
+        if (isNavOpen) {
             return
-        }
-        if (!isAuth) {
+        } else if (!isAuth) {
             history.push('/signup')
+        } else {
+            setPlayList([...playList, {
+                name: beat.name,
+                musicSrc: `https://beats-for-minds.herokuapp.com/stream/audio/uploads/${beat._id}`,
+                key: beat._id,
+                cover: beat.image,
+            }])
+            console.log(playList)
         }
-        setPlayList([{
-            name: beat.name,
-            musicSrc: beat.beet,
-            cover: beat.image,
-        }])
     }
 
     const changePlayList = (id, list, info) => {
+        const newList = []
+        list.forEach(item => {
+            newList.push({
+                cover: item.cover,
+                name: item.name,
+                musicSrc: item.musicSrc,
+                key: item.key
+            })
+        })
         setPlayList(list)
     }
 
@@ -89,9 +108,33 @@ const Beats = () => {
         }
     }
 
+    const customDownloader = (test, test2) => {
+        const path = test.src.split('/')
+        const id = path[path.length - 1]
+        const downloadLink = `https://beats-for-minds.herokuapp.com/stream/download/uploads/${id}`
+        const win = window.open(downloadLink, '__blank');
+        win.focus();
+    }
+
+    const setFav = (id) => {
+        if (isNavOpen) {
+            return
+        } else if (!isAuth) {
+            history.push('/signup')
+            return
+        }
+        dispatch(actions.setFav(id))
+    }
+
+    const onAudioPause = (info) => {
+        console.log(info)
+        return
+    }
+
+
     return (
         <div className={classes.Beats}>
-            <SideNav open={isNavOpen} changeTab={changeTab}></SideNav>
+            <SideNav currentTab={queries.tab} open={isNavOpen} changeTab={changeTab}></SideNav>
             <div onClick={closeNav} className={isNavOpen ? `${classes.Beats__container} ${classes.blur}` : classes.Beats__container}>
                 <section className={classes.Beats__container__slider}>
                     <div className={classes.Beats__container__slider__elements}>
@@ -104,7 +147,7 @@ const Beats = () => {
                                     <FaFacebookF className={classes.Beats__container__slider__elements__upper__icons__icon} />
                                 </div>
                             </div>
-                            <input placeholder="SEARCH" type="text" className={classes.Beats__container__slider__elements__upper__search} />
+                            <input placeholder="SEARCH" type="text" className={classes.Beats__container__slider__elements__upper__search} onChange={e => changeSearch(e.target.value)} />
                         </div>
                         <div className={classes.Beats__container__slider__elements__lower}>
                             <h2>Most <br /> popular</h2>
@@ -114,23 +157,19 @@ const Beats = () => {
                     <BeatsSlider></BeatsSlider>
                 </section>
                 <section className={classes.Beats__container__beats}>
-                    <h2>{queries.tab === 'home' ? 'Beats' : 'Favorites'}</h2>
-                    {loading ? <Spinner color="purple" /> : <BeatsList onPlayBeat={onPlayBeat} beats={beats} />}
+                    <h2>{queries.tab === 'home' ? 'Beats' : queries.tab === 'fev' ? 'Favorites' : 'downloads'}</h2>
+                    {loading ? <Spinner color="purple" /> : <BeatsList setFav={setFav} onPlayBeat={onPlayBeat} beats={beats} />}
                 </section>
             </div>
-            {isAuth && <ReactJkMusicPlayer
-                showMediaSession
-                glassBg
-                showReload={false}
-                showMiniModeCover={true}
-                showLyric={false}
-                showPlayMode={false}
-                audioLists={playList}
-                theme="dark"
-                onDestroyed={e => setPlayList([])}
-                onAudioListsChange={changePlayList}
-                showDownload={isAuth} />
-                }
+            {
+                isAuth && <BeatsPlayer
+                    playList={playList}
+                    clearPlayList={e => setPlayList([])}
+                    changePlayList={changePlayList}
+                    isAuth={isAuth}
+                    customDownloader={customDownloader}
+                    onAudioPause={onAudioPause} />
+            }
         </div>
     )
 }

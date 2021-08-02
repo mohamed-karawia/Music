@@ -6,5 +6,6 @@ export {
 } from './auth'
 
 export {
-    getBeats
+    getBeats,
+    setFav
 } from './beats'

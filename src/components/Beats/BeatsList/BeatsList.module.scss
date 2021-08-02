@@ -1,12 +1,12 @@
 .List{
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, 19rem);
+    grid-template-columns: repeat(auto-fit, 20rem);
     column-gap: 3rem;
     row-gap: 2rem;
 
     @media only screen and (max-width: 600px){
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         column-gap: 1rem;
         row-gap: 5rem;
     }

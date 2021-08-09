@@ -7,6 +7,8 @@ import Signup from './pages/Signup/Signup';
 import Login from './pages/Login/Login';
 import Membership from './pages/Membership/Membership';
 import Beats from './pages/Beats/Beats';
+import Policy from './pages/Policy/Policy';
+import Verify from './pages/Verify/Verify';
 // Axios
 import axios from 'axios';
 // Redux
@@ -33,8 +35,9 @@ function App() {
 
   let routes = (
     <Switch>
+        <Route path="/policy" component={Policy}></Route>
         <Route path="/beats" component={Beats}></Route>
-        <Route path="/membership" component={Membership}></Route>
+        <Route path="/membership" component={Membership} hideMemberShipImage={false}></Route>
         <Route path="/signup" component={Signup}></Route>
         <Route path="/login" component={Login}></Route>
         <Route path="/" component={Home}></Route>
@@ -43,9 +46,11 @@ function App() {
   if(isAuth){
     routes = (
       <Switch>
+      <Route path="/verify" component={Verify}></Route>
+      <Route path="/policy" component={Policy}></Route>
       <Route path="/beats" component={Beats}></Route>
-      <Route path="/membership" component={Membership}></Route>
-      <Redirect to="/beats?tab=home" />
+      <Route path="/membership" component={Membership} hideMemberShipImage={false}></Route>
+      <Redirect to="/beats?page=1&tab=home" />
     </Switch>
     )
   }

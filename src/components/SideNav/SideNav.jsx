@@ -8,6 +8,8 @@ import { FaRegCompass } from "@react-icons/all-files/fa/FaRegCompass";
 import { FaHeart } from "@react-icons/all-files/fa/FaHeart";
 import { AiOutlineDownload } from "@react-icons/all-files/ai/AiOutlineDownload";
 import { BiLogOut } from "@react-icons/all-files/bi/BiLogOut";
+import { AiOutlineUserAdd } from "@react-icons/all-files/ai/AiOutlineUserAdd";
+
 // Logo
 import Logo from '../../assets/logo.png'
 // react-router
@@ -61,6 +63,12 @@ const SideNav = (props) => {
                         <AiOutlineDownload className={classes.SideNav__list__item__icon} />
                         <h2>downloads</h2>
                     </div>
+                </li>
+                <li className={classes.SideNav__list__item}>
+                    <NavLink to="/membership" className={classes.link}>
+                        <AiOutlineUserAdd className={classes.SideNav__list__item__icon} />
+                        <h2>Membership</h2>
+                    </NavLink>
                 </li>
                 {isAuth && <li className={classes.SideNav__list__item}>
                     <div className={classes.link} onClick={logout}>

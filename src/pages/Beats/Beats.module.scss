@@ -1,9 +1,14 @@
+@import '../../sass/global.scss';
+
 .Beats{
     display: flex;
     
     &__container{
         width: 100%;
         transition: .3s all;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &__slider{
             position: relative;
@@ -84,6 +89,7 @@
         &__beats{
             padding: 2rem 5rem;
             margin-bottom: 10rem;
+            width: 100%;
 
             @media only screen and (max-width: 600px){
                 padding: 2rem 1rem;
@@ -95,6 +101,31 @@
                 font-weight: 800;
                 letter-spacing: 2px;
                 margin-bottom: 2rem;
+            }
+        }
+    }
+
+    .pagination {
+        margin-top: 2rem;
+
+        &__list {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+
+
+            &__item {
+                margin: 0 .4rem;
+                border: 1px solid $purple;
+                padding: .3rem .6rem;
+                text-decoration: none;
+                font-size: 1.2rem;
+                color: $purple;
+
+                &__active {
+                    background-color: $purple;
+                    color: white;
+                }
             }
         }
     }

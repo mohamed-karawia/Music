@@ -2,7 +2,9 @@ export {
     registerUser,
     authCheckState,
     loginLocal,
-    logout
+    logout,
+    loginFacebookOrGoogle,
+    sendCode
 } from './auth'
 
 export {

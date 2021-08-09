@@ -12,6 +12,10 @@ import { useHistory } from 'react-router';
 import Spinner from '../../components/Spinner/Spinner';
 // Icons
 import { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
+// Facebook Login
+import FacebookLogin from 'react-facebook-login';
+// Google Login
+import GoogleLogin from 'react-google-login';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -31,6 +35,22 @@ const Login = () => {
 
     const goBack = () => {
         history.goBack()
+    }
+
+    const responseFacebook = (response) => {
+        console.log(response);
+        const token = {
+            access_token: response.accessToken
+        }
+        dispatch(actions.loginFacebookOrGoogle(token, 'facebook'))
+    }
+
+    const responseGoogle = (response) => {
+        console.log(response.accessToken);
+        const token = {
+            access_token: response.accessToken
+        }
+        dispatch(actions.loginFacebookOrGoogle(token, 'google'))
     }
 
     return (
@@ -65,6 +85,22 @@ const Login = () => {
                     <button type="submit" className={classes.button}>{loading ? <Spinner /> : 'Login'}</button>
                     <p>NOT A MEMBER YET? <Link to="/signup">SIGN UP</Link></p>
                 </form>
+                <div className={classes.google_facebook}>
+                    <p>Or</p>
+                    <FacebookLogin
+                        appId="1867797723379430"
+                        autoLoad={false}
+                        fields="name,email,picture"
+                        callback={responseFacebook} />
+                    <GoogleLogin
+                        clientId="95840003083-846fert97pdnrbimt2g4jgak4v9trqfl.apps.googleusercontent.com"
+                        buttonText="LOGIN WITH GOOGLE"
+                        onSuccess={responseGoogle}
+                        onFailure={responseGoogle}
+                        responseType={'token'}
+                        cookiePolicy={'single_host_origin'}
+                    />
+                </div>
             </div>
             <div className={classes.Signup__bg}>
                 <h2>CHOOSE THE BEAT<br />

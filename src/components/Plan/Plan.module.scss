@@ -41,6 +41,25 @@
         padding: 4rem 0;
     }
 
+    &__sub{
+        background-color: green;
+        width: 9rem;
+        height: 9rem;
+        border-radius: 50%;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        font-weight: 600;
+        position: absolute;
+        top: -20%;
+        left: 80%;
+        z-index: 5;
+        @include shadow;
+    }
+
         p{
             font-size: 1.3rem;
             text-transform: capitalize;
@@ -54,7 +73,9 @@
         button{
             align-self: center;
             position: absolute;
+            left: 50%;
             top: 90%;
+            transform: translateX(-50%);
             border: none;
             background-color: black;
             color: white;
@@ -63,18 +84,38 @@
             text-transform: uppercase;
             transition: all .2s;
 
-            &:hover{
-                transform: scale(1.1);
+            &:disabled{
+                background-color: rgb(153, 153, 153);
+                cursor: default;
             }
+
+            
         }
 
         .pro{
             background-image: linear-gradient(to right, $purple, rgb(33, 119, 218));
             transition: all .2s;
 
+            &:disabled{
+                background-image: none;
+                background-color: rgb(153, 153, 153);
+                cursor: default;
+            }
+
+            &:disabled:hover{
+                background-image: none;
+                
+            }
+
+
+
             &:hover{
                 background-image:  linear-gradient(to right, $purple, $purple);
             }
         }
     }
+}
+
+.border{
+    border: 1px solid green;
 }

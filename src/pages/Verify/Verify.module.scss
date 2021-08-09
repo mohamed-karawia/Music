@@ -1,0 +1,81 @@
+@import '../../sass/global.scss';
+
+.Verify{
+    background-image: linear-gradient(rgba(164, 0, 176, 0.507), rgba(164, 0, 176, 0.507)), url('../../assets/loginbg.png');
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    &__heading{
+        color: white;
+        text-transform: capitalize;
+        font-size: 2rem;
+    }
+
+    &__method{
+        display: flex;
+        align-items: center;
+        margin-top: 2rem;
+
+        p{
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-right: 3rem;
+        }
+
+        select{
+            border: 1px solid red;
+            color: $purple;
+            background-color: white;
+            padding: 1rem 3rem;
+            font-size: 1.6rem;
+            cursor: pointer;
+
+            option{
+                background-color: white;
+            }
+        }
+    }
+
+    &__button{
+        margin-top: 3rem;
+        padding: 1rem 2rem;
+        background-color: white;
+        border: 1px solid $purple;
+        color: $purple;
+        text-transform: capitalize;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: .2s all;
+
+        &:hover{
+            background-color: $purple;
+            color: white;
+        }
+    }
+
+    &__code{
+        margin-top: 3rem;
+
+        form{
+            display: flex;
+            flex-direction: column;
+
+            input{
+                border: 1px solid $purple;
+                padding: 1rem 2rem;
+
+                &::placeholder{
+                    color: $purple;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

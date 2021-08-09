@@ -7,3 +7,5 @@ export const AUTH_LOGOUT = 'AUTH_LOGOUT';
 export const GET_BEATS_START = 'GET_BEATS_START';
 export const GET_BEATS_SUCCESS = 'GET_BEATS_SUCCESS';
 export const GET_BEATS_FAILED = 'GET_BEATS_FAILED';
+// Verify
+export const VERIFT_FINISHED = 'VERIFT_FINISHED'

@@ -130,6 +130,16 @@
         }
     }
 
+    .google_facebook{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        & > * {
+            margin-bottom: 1rem;
+        }
+    }
+
     &__bg {
         background-image: linear-gradient(rgba(164, 0, 176, 0.507), rgba(164, 0, 176, 0.507)), url('../../assets/loginbg.png');
         background-position: center;

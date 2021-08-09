@@ -20,9 +20,9 @@ export const getBeatsSuccess = (data) => {
 export const getBeats = (queries) => {
     return dispatch => {
         dispatch(getBeatsStart())
-        let link = `/music?page=${1}&sort=1&tap=${queries.tab}`
+        let link = `/music?page=${queries.page}&sort=1&tap=${queries.tab}`
         if(queries.search){
-            link = `/music?page=${1}&sort=1&tap=${queries.tab}&searchQ=${queries.search}`
+            link = `/music?page=${queries.page}&sort=1&tap=${queries.tab}&searchQ=${queries.search}`
         }
         axios.get(link)
         .then(res => {

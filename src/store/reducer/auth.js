@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initalState = {
     token: null,
     error: '',
-    loading: false
+    loading: false,
+    verify: false
 }
 
 const reducer = (state = initalState, action) => {
@@ -13,12 +14,18 @@ const reducer = (state = initalState, action) => {
                 ...state,
                 loading: true
             }
+        case actionTypes.VERIFT_FINISHED:
+            return {
+                ...state,
+                loading: false
+            }
         case actionTypes.AUTH_SUCCESS:
             return {
                 ...state,
                 loading: false,
                 token: action.token,
-                error: ''
+                error: '',
+                verify: action.verify
             }
         case actionTypes.AUTH_FAILED:
             return {

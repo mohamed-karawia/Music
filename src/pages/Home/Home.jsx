@@ -20,6 +20,7 @@ import Membership from '../Membership/Membership';
 const Home = () => {
     const history = useHistory();
     const dispatch = useDispatch();
+    const [searchTerm, setSearchTerm]= useState('')
 
     useEffect(() => {
         dispatch(actions.getBeats({ page: 1, tab: 'home' }))
@@ -29,6 +30,11 @@ const Home = () => {
     const lastThreeBeats = beats.slice(0, 3)
     const isAuth = useSelector(state => state.auth.token !== null)
 
+    // /beats?tab=${'home'}&search=${value}
+    const searchBeats = (e) => {
+        e.preventDefault()
+        history.push(`/beats?tab=${'home'}&search=${searchTerm}`)
+    }
 
     const pushLogin = () => {
         history.push('/login')
@@ -44,8 +50,8 @@ const Home = () => {
             <section className={classes.header}>
                 <div className={classes.header__left}>
                     <h2 className={classes.header__left__heading}>FIND YOUR INNER BEAT</h2>
-                    <form className={classes.header__left__form}>
-                        <input type="text" />
+                    <form className={classes.header__left__form} onSubmit={e => searchBeats(e)}>
+                        <input type="text" onChange={e => setSearchTerm(e.target.value)}/>
                         <button><AiOutlineSearch size={30} /></button>
                     </form>
                     <div className={classes.header__left__beats}>

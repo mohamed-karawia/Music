@@ -31,7 +31,6 @@ const Navbar = () => {
             </div>
             <ul className={classes.Navbar__list}>
                 <li className={classes.Navbar__list__item}><Link to="/">Home</Link></li>
-                <li className={classes.Navbar__list__item}><Link to="/">Categories</Link></li>
                 <li className={classes.Navbar__list__item}><Link to="/beats?tab=home">beats</Link></li>
             </ul>
             {!isAuth ? <div className={classes.Navbar__auth}>

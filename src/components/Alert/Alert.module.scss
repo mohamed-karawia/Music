@@ -1,0 +1,17 @@
+.Alert{
+    background-color: white;
+    padding: 2rem;
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__close{
+        padding: 1rem 3rem;
+        border: none;
+        background-color: rgb(253, 61, 61);
+        color: white;
+        margin-top: 2rem;
+        cursor: pointer;
+    }
+}

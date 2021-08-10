@@ -1,38 +1,31 @@
 {
   "files": {
-    "main.css": "/Music/static/css/main.533edf00.chunk.css",
-    "main.js": "/Music/static/js/main.3622ee4b.chunk.js",
-    "main.js.map": "/Music/static/js/main.3622ee4b.chunk.js.map",
+    "main.css": "/Music/static/css/main.239ce5eb.chunk.css",
+    "main.js": "/Music/static/js/main.9b8175bd.chunk.js",
+    "main.js.map": "/Music/static/js/main.9b8175bd.chunk.js.map",
     "runtime-main.js": "/Music/static/js/runtime-main.f540b892.js",
     "runtime-main.js.map": "/Music/static/js/runtime-main.f540b892.js.map",
     "static/css/2.1ef3451a.chunk.css": "/Music/static/css/2.1ef3451a.chunk.css",
-    "static/js/2.98c7f91c.chunk.js": "/Music/static/js/2.98c7f91c.chunk.js",
-    "static/js/2.98c7f91c.chunk.js.map": "/Music/static/js/2.98c7f91c.chunk.js.map",
+    "static/js/2.8a0cfe1f.chunk.js": "/Music/static/js/2.8a0cfe1f.chunk.js",
+    "static/js/2.8a0cfe1f.chunk.js.map": "/Music/static/js/2.8a0cfe1f.chunk.js.map",
     "static/js/3.f83504a7.chunk.js": "/Music/static/js/3.f83504a7.chunk.js",
     "static/js/3.f83504a7.chunk.js.map": "/Music/static/js/3.f83504a7.chunk.js.map",
     "index.html": "/Music/index.html",
     "static/css/2.1ef3451a.chunk.css.map": "/Music/static/css/2.1ef3451a.chunk.css.map",
-    "static/css/main.533edf00.chunk.css.map": "/Music/static/css/main.533edf00.chunk.css.map",
-    "static/js/2.98c7f91c.chunk.js.LICENSE.txt": "/Music/static/js/2.98c7f91c.chunk.js.LICENSE.txt",
-    "static/media/beat1.9c2b3e1d.png": "/Music/static/media/beat1.9c2b3e1d.png",
-    "static/media/beat2.80f0bda0.png": "/Music/static/media/beat2.80f0bda0.png",
-    "static/media/beat3.c838c8cb.png": "/Music/static/media/beat3.c838c8cb.png",
-    "static/media/beat4.07f864ab.png": "/Music/static/media/beat4.07f864ab.png",
+    "static/css/main.239ce5eb.chunk.css.map": "/Music/static/css/main.239ce5eb.chunk.css.map",
+    "static/js/2.8a0cfe1f.chunk.js.LICENSE.txt": "/Music/static/js/2.8a0cfe1f.chunk.js.LICENSE.txt",
     "static/media/beats.8793e2e9.png": "/Music/static/media/beats.8793e2e9.png",
     "static/media/Home.module.scss": "/Music/static/media/skr.8a9ebb30.png",
     "static/media/Verify.module.scss": "/Music/static/media/loginbg.7e9ef90b.png",
     "static/media/logo.e4b9bbc0.png": "/Music/static/media/logo.e4b9bbc0.png",
     "static/media/Membership.module.scss": "/Music/static/media/memberbg.1a2ee685.png",
-    "static/media/music1.710cf4a3.png": "/Music/static/media/music1.710cf4a3.png",
-    "static/media/music2.0c4dffa3.png": "/Music/static/media/music2.0c4dffa3.png",
-    "static/media/music3.85fe85b6.png": "/Music/static/media/music3.85fe85b6.png",
     "static/media/Signup.module.scss": "/Music/static/media/signupbg.dfa7be2d.png"
   },
   "entrypoints": [
     "static/js/runtime-main.f540b892.js",
     "static/css/2.1ef3451a.chunk.css",
-    "static/js/2.98c7f91c.chunk.js",
-    "static/css/main.533edf00.chunk.css",
-    "static/js/main.3622ee4b.chunk.js"
+    "static/js/2.8a0cfe1f.chunk.js",
+    "static/css/main.239ce5eb.chunk.css",
+    "static/js/main.9b8175bd.chunk.js"
   ]
 }

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 const Verify = () => {
     const dispatch = useDispatch();
-    const [method, setMethod] = useState('mobile');
+    const method = 'mobile'
     const [codeSent, setCodeSent] = useState(false)
     const loading =  useSelector(state => state.auth.loading)
 

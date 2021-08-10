@@ -59,11 +59,9 @@ export const registerUser = (data) => {
         dispatch(authStart());
         axios.put('/user/auth/regester' ,data)
         .then(res => {
-            console.log(res)
             dispatch(saveToLocalStorage(res.data.data.token, res.data.data.expiresIn, res.data.data.verify))
         })
         .catch(err => {
-            console.log(err.response.data.data[0].msg)
             dispatch(authFailed(err.response.data.data.message))
         })
     }
@@ -74,11 +72,9 @@ export const loginLocal = (data) => {
         dispatch(authStart());
         axios.post('/user/auth/login', data)
         .then(res => {
-            console.log(res)
             dispatch(saveToLocalStorage(res.data.data.token, res.data.data.expiresIn, res.data.data.verify))
         })
         .catch(err => {
-            console.log(err.response.data.message)
             dispatch(authFailed(err.response.data.message))
         })
     }
@@ -89,11 +85,9 @@ export const loginFacebookOrGoogle = (token, type) => {
         let link = `https://beats-for-minds.herokuapp.com/user/auth/regester/${type}`
         axios.put(link, token)
         .then(res => {
-            console.log(res)
             dispatch(saveToLocalStorage(res.data.data.token.token, res.data.data.token.expiresIn, res.data.data.verify))
         })
         .catch(err => {
-            console.log(err.response)
         })
         }
 }
@@ -122,11 +116,9 @@ export const sendCode = (data) => {
         dispatch(authStart())
         axios.post('/user/auth/verify/send', data)
         .then(res => {
-            console.log(res)
             dispatch(verifyFinished())
         })
         .catch(err => {
-            console.log(err.response)
             dispatch(verifyFinished())
         })
     }
@@ -137,10 +129,10 @@ export const checkCode = (data) => {
         dispatch(authStart())
         axios.post('/user/auth/verify/check', data)
         .then(res => {
-            console.log(res)
+            window.alert('Account verified successfully')
         })
         .catch(err => {
-            console.log(err)
+            window.alert('Account not verified please try again')
         })
     }
 }

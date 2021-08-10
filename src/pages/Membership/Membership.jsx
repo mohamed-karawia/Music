@@ -3,50 +3,36 @@ import React, {useState, useEffect} from 'react';
 import classes from './Membership.module.scss';
 // components
 import Plan from '../../components/Plan/Plan';
-import SideNav from '../../components/SideNav/SideNav';
 // Axios
 import axios from 'axios'
 
 const Membership = (props) => {
-    // Plans of subscriptions
-    // const plans = [
-    //     { price: '1', period: 'TRIAL FOR 3 Days', details: ['Listen to all beats', 'Share beats with friends', 'Download 3 beats per day'] },
-    //     { price: '19.99', period: 'MONTHLY', details: ['Listen to all beats', 'Share beats with friends', 'Download unlimited number of beats']},
-    //     { price: '180', period: 'PER YEAR', details: ['Listen to all beats', 'Share beats with friends', 'Download unlimited number of beats', 'Save 40%'], pro: true },
-    // ]
     const [plans, setPlans] = useState([]);
     const [isOneTime, setIsOneTime] = useState(false);
     const [userCurrentPlan, setUserCurrentPlan] = useState('')
 
-    const successPayment = data => {
-        alert('Payment Successful');
-    };
-
-    const errorPayment = data => {
-        alert('Payment Error');
-    };
-
     useEffect(() => {
+        getPlans()
+    }, [])
+
+    const getPlans = () => {
         axios.get('/user/pay/plans')
         .then(res => {
-            console.log(res)
             setPlans(res.data.data.plans)
             setIsOneTime(res.data.data.user.gotOneTimePlan)
             setUserCurrentPlan(res.data.data.user.plan.plan)
         })
         .catch(err => {
-            console.log(err.response)
+
         })
-    }, [])
+    }
 
     const pay = (data) => {
-        console.log(data)
         axios.post('/user/pay/subscription', data)
         .then(res => {
-            console.log(res)
+            getPlans()
         })
         .catch(err => {
-            console.log(err.response)
         })
     }
 
@@ -65,6 +51,7 @@ const Membership = (props) => {
                         details={plan.name === '3 days plan' ? ['Listen to all beats', 'Share beats with friends', 'Download 3 beats per day'] : plan.name === 'month plan' ? ['Listen to all beats', 'Share beats with friends', 'Download unlimited number of beats'] : ['Listen to all beats', 'Share beats with friends', 'Download unlimited number of beats', 'Save 40%']}
                         pro={plan.name === 'year plan' ? true : false}
                         disable={(plan.name === '3 days plan' && isOneTime) || userCurrentPlan}
+                        // eslint-disable-next-line
                         currentPlan={plan._id == userCurrentPlan} />
                     ))}
                 </div>

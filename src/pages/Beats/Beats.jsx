@@ -8,11 +8,6 @@ import BeatsSlider from '../../components/BeatsSlider/BeatsSlider';
 import Spinner from '../../components/Spinner/Spinner';
 // react-router
 import { useLocation, useHistory } from 'react-router-dom'
-// Temp beats data
-import img1 from '../../assets/beat1.png';
-import img2 from '../../assets/beat2.png';
-import img3 from '../../assets/beat3.png';
-import img4 from '../../assets/beat4.png';
 // Queries
 import queryString from 'query-string';
 // Redux
@@ -50,6 +45,7 @@ const Beats = () => {
 
     useEffect(() => {
         dispatch(actions.getBeats(queries))
+        // eslint-disable-next-line
     }, [queries])
 
     const beats = useSelector(state => state.beats.beats);
@@ -61,7 +57,7 @@ const Beats = () => {
 
     const changeTab = (tab) => {
         setIsNavOpen(false)
-        if ((tab === 'fev' || tab === 'download') && !isAuth) {
+        if ((tab === 'fev' || tab === 'downloads') && !isAuth) {
             history.push('/signup')
         } else {
             history.replace(`/beats?page=${queries.page}&tab=${tab}`)
@@ -119,18 +115,16 @@ const Beats = () => {
         } else if (isAuth && !verify) {
             history.push('/verify')
         } else {
-            axios.get('/stream/download/check')
+                console.log('test')
+                 axios.get('/stream/download/check')
                 .then(res => {
-                    console.log(res)
                     const path = test.src.split('/')
                     const id = path[path.length - 1]
                     const downloadLink = `${process.env.REACT_APP_BASE_LINK}/stream/download/uploads/${id}`
-                    console.log(downloadLink)
                     const win = window.open(downloadLink, '__blank');
                     win.focus();
                 })
                 .catch(err => {
-                    console.log(err.response)
                     setAlert('You have reached your maximum downloads limit')
                     setOpenAlert(true)
                 })
@@ -151,7 +145,6 @@ const Beats = () => {
     }
 
     const onAudioPause = (info) => {
-        console.log(info)
         return
     }
 

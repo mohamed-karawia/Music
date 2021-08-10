@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 // Styles
 import classes from './SideNav.module.scss';
 // react-router
@@ -13,17 +13,14 @@ import { AiOutlineUserAdd } from "@react-icons/all-files/ai/AiOutlineUserAdd";
 // Logo
 import Logo from '../../assets/logo.png'
 // react-router
-import { useHistory, useLocation } from 'react-router';
-import queryString from 'query-string';
+import { useHistory } from 'react-router';
 // Redux
 import { useSelector, useDispatch } from 'react-redux';
-import * as actions from '../../store/actions'
+import * as actions from '../../store/actions';
 
-const useTag = '<use xlink:href="../../assets/sprite.svg#icon-compass2" />';
 const SideNav = (props) => {
     const history = useHistory();
     const dispatch = useDispatch()
-    const { search } = useLocation();
 
     const isAuth = useSelector(state => state.auth.token !== null)
 

@@ -38,7 +38,6 @@ const Login = () => {
     }
 
     const responseFacebook = (response) => {
-        console.log(response);
         const token = {
             access_token: response.accessToken
         }
@@ -46,7 +45,6 @@ const Login = () => {
     }
 
     const responseGoogle = (response) => {
-        console.log(response.accessToken);
         const token = {
             access_token: response.accessToken
         }

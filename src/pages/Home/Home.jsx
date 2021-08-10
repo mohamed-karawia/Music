@@ -8,10 +8,6 @@ import { useHistory } from 'react-router-dom';
 import classes from './Home.module.scss';
 // Components
 import Navbar from '../../components/Navbar/Navbar';
-// Beats
-import img1 from '../../assets/music1.png';
-import img2 from '../../assets/music2.png';
-import img3 from '../../assets/music3.png';
 // Icons
 import { AiOutlineSearch } from "@react-icons/all-files/ai/AiOutlineSearch";
 // Membership Page
@@ -24,6 +20,7 @@ const Home = () => {
 
     useEffect(() => {
         dispatch(actions.getBeats({ page: 1, tab: 'home' }))
+        // eslint-disable-next-line
     }, [])
 
     const beats = useSelector(state => state.beats.beats)

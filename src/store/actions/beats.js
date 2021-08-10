@@ -27,10 +27,8 @@ export const getBeats = (queries) => {
         axios.get(link)
         .then(res => {
             dispatch(getBeatsSuccess(res.data.data))
-            console.log(res)
         })
         .catch(err => {
-            console.log(err.response)
         })
     }
 }
@@ -41,10 +39,8 @@ export const setFav = (id) => {
         beetId: id
     })
     .then(res => {
-        console.log(res)
     })
     .catch(err => {
-        console.log(err.response)
     })
 }
 }

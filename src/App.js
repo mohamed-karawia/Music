@@ -25,7 +25,7 @@ function App() {
   }, [dispatch])
 
   const isAuth = useSelector(state => state.auth.token !== null);
-  const token = useSelector(state => state.auth.token)
+  const token = localStorage.getItem('token')
 
   axios.defaults.baseURL = 'https://beats-for-minds.herokuapp.com';
   if (token){

@@ -12,17 +12,23 @@ const Plan = (props) => {
     const history = useHistory();
     const [stripePlan, setStripePlan] = useState('')
 
-    const pushToSignup = (path) => {
-        history.push(path)
+    const isAuth = useSelector(state => state.auth.token !== null)
+    // eslint-disable-next-line
+    const isVerified = useSelector(state => state.auth.verify) == 'true'
+
+    const pushToSignup = () => {
+        if(!isAuth){
+            history.push('/signup')
+        }else {
+            history.push('/verify')
+        }
     }
 
     const onOpened = (id) => {
-        console.log(id)
         setStripePlan(id)
     }
 
     const onToken = (response) => {
-        console.log(stripePlan)
         const data = {
             token: response.id,
             plan: stripePlan
@@ -31,8 +37,6 @@ const Plan = (props) => {
     }
 
 
-    const isAuth = useSelector(state => state.auth.token !== null)
-    const isVerified = useSelector(state => state.auth.verify)
 
     return (
         <div className={classes.Plan}>
@@ -44,7 +48,7 @@ const Plan = (props) => {
                     <p key={i}>{i}</p>
                 ))}
                <React.Fragment>
-                {isAuth ? <StripeCheckout
+                {isAuth && isVerified ? <StripeCheckout
                 opened={e => onOpened(props.stripe_plan_id)}
                 label="Subscribe"
                 name="Beats For Mind" // the pop-in header title
@@ -57,7 +61,8 @@ const Plan = (props) => {
                 stripeKey="pk_test_51JLBojIUiHtAtSMpJEiRHTI3V8d07WiLwSOHZIPFmMbQzqkOzrATc3o8Hf8LVALASVuC1o3V7p9pPRhQMBZ26PHV00EebpsM2b"
             >
                 <button disabled={props.disable} className={props.pro ? classes.pro : ''}>{!props.disable ? 'Subscribe' : 'Subscribed'}</button>
-                </StripeCheckout> : !isVerified ?<button onClick={e => pushToSignup('/verify')} className={props.pro ? classes.pro : ''}>Subscribe</button> : <button onClick={e => pushToSignup('/signup')} className={props.pro ? classes.pro : ''}>Subscribe</button>}
+                </StripeCheckout> : <button onClick={pushToSignup} className={props.pro ? classes.pro : ''}>Subscribe</button>
+                }
                 </React.Fragment>
             </div>
         </div>

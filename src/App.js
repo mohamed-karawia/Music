@@ -25,7 +25,8 @@ function App() {
   }, [dispatch])
 
   const isAuth = useSelector(state => state.auth.token !== null);
-  const token = localStorage.getItem('token')
+  const verified = useSelector(state => state.auth.verify == 'true');
+  const token = localStorage.getItem('token');
 
   axios.defaults.baseURL = 'https://beats-for-minds.herokuapp.com';
   if (token){
@@ -44,15 +45,26 @@ function App() {
       </Switch>
   )
   if(isAuth){
-    routes = (
-      <Switch>
-      <Route path="/verify" component={Verify}></Route>
-      <Route path="/policy" component={Policy}></Route>
-      <Route path="/beats" component={Beats}></Route>
-      <Route path="/membership" component={Membership} hideMemberShipImage={false}></Route>
-      <Redirect to="/beats?page=1&tab=home" />
-    </Switch>
-    )
+    if(!verified){
+      routes = (
+        <Switch>
+        <Route path="/verify" component={Verify}></Route>
+        <Route path="/policy" component={Policy}></Route>
+        <Route path="/beats" component={Beats}></Route>
+        <Route path="/membership" component={Membership} hideMemberShipImage={false}></Route>
+        <Redirect to="/beats?page=1&tab=home" />
+      </Switch>
+      )
+    } else {
+      routes = (
+        <Switch>
+        <Route path="/policy" component={Policy}></Route>
+        <Route path="/beats" component={Beats}></Route>
+        <Route path="/membership" component={Membership} hideMemberShipImage={false}></Route>
+        <Redirect to="/beats?page=1&tab=home" />
+      </Switch>
+      )
+    }
   }
 
   return (

@@ -4,7 +4,8 @@ export {
     loginLocal,
     logout,
     loginFacebookOrGoogle,
-    sendCode
+    sendCode,
+    checkCode
 } from './auth'
 
 export {

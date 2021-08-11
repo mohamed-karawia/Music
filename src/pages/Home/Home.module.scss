@@ -124,11 +124,13 @@
 
             &__login {
                 @include signup;
+                cursor: pointer;
                 font-size: 2rem;
             }
 
             &__signup {
                 @include signup;
+                cursor: pointer;
                 font-size: 2rem;
             }
         }

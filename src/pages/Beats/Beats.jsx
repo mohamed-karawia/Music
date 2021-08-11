@@ -53,7 +53,7 @@ const Beats = () => {
     const loading = useSelector(state => state.beats.loading);
     const token = useSelector(state => state.auth.token)
     const isAuth = useSelector(state => state.auth.token !== null);
-    const verify = useSelector(state => state.auth.verify)
+    const verify = useSelector(state => state.auth.verify == 'true')
 
     const changeTab = (tab) => {
         setIsNavOpen(false)

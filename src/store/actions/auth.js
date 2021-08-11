@@ -24,7 +24,26 @@ export const authFailed = (error) => {
 
 export const verifyFinished = () => {
     return {
-        type: actionTypes.VERIFT_FINISHED
+        type: actionTypes.VERIFY_FINISHED
+    }
+}
+
+export const checkCodeStart = () => {
+    return {
+        type: actionTypes.CHECK_CODE_START
+    }
+}
+
+export const checkCodeSuccess = () => {
+    return {
+        type: actionTypes.CHECK_CODE_SUCCESS
+    }
+}
+
+export const checkCodeFailed = (error) => {
+    return {
+        type: actionTypes.CHECK_CODE_FAILED,
+        error
     }
 }
 
@@ -126,13 +145,14 @@ export const sendCode = (data) => {
 
 export const checkCode = (data) => {
     return dispatch => {
-        dispatch(authStart())
+        dispatch(checkCodeStart())
         axios.post('/user/auth/verify/check', data)
         .then(res => {
-            window.alert('Account verified successfully')
+            localStorage.setItem('verify', 'true')
+            dispatch(checkCodeSuccess())
         })
         .catch(err => {
-            window.alert('Account not verified please try again')
+            dispatch(checkCodeFailed('Wrong code, Please try again'))
         })
     }
 }

@@ -12,10 +12,10 @@ import { useHistory } from 'react-router';
 import Spinner from '../../components/Spinner/Spinner';
 // Icons
 import { FaArrowLeft } from "@react-icons/all-files/fa/FaArrowLeft";
-// Facebook Login
-import FacebookLogin from 'react-facebook-login';
-// Google Login
-import GoogleLogin from 'react-google-login';
+// // Facebook Login
+// import FacebookLogin from 'react-facebook-login';
+// // Google Login
+// import GoogleLogin from 'react-google-login';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -83,7 +83,7 @@ const Login = () => {
                     <button type="submit" className={classes.button}>{loading ? <Spinner /> : 'Login'}</button>
                     <p>NOT A MEMBER YET? <Link to="/signup">SIGN UP</Link></p>
                 </form>
-                <div className={classes.google_facebook}>
+                {/* <div className={classes.google_facebook}>
                     <p>Or</p>
                     <FacebookLogin
                         appId="1867797723379430"
@@ -98,7 +98,7 @@ const Login = () => {
                         responseType={'token'}
                         cookiePolicy={'single_host_origin'}
                     />
-                </div>
+                </div> */}
             </div>
             <div className={classes.Signup__bg}>
                 <h2>CHOOSE THE BEAT<br />

@@ -4,7 +4,9 @@ const initalState = {
     token: null,
     error: '',
     loading: false,
-    verify: false
+    verify: 'false',
+    checkCodeError: '',
+    checkCodeLoading: false
 }
 
 const reducer = (state = initalState, action) => {
@@ -14,10 +16,28 @@ const reducer = (state = initalState, action) => {
                 ...state,
                 loading: true
             }
-        case actionTypes.VERIFT_FINISHED:
+        case actionTypes.VERIFY_FINISHED:
             return {
                 ...state,
                 loading: false
+            }
+        case actionTypes.CHECK_CODE_START:
+            return {
+                ...state,
+                checkCodeLoading: true
+            }
+        case actionTypes.CHECK_CODE_SUCCESS:
+            return {
+                ...state,
+                checkCodeLoading: false,
+                verify: 'true',
+                checkCodeError: ''
+            }
+        case actionTypes.CHECK_CODE_FAILED:
+            return {
+                ...state,
+                checkCodeError: action.error,
+                checkCodeLoading: false
             }
         case actionTypes.AUTH_SUCCESS:
             return {
@@ -25,7 +45,7 @@ const reducer = (state = initalState, action) => {
                 loading: false,
                 token: action.token,
                 error: '',
-                verify: action.verify
+                verify: action.verify.toString()
             }
         case actionTypes.AUTH_FAILED:
             return {

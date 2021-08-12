@@ -41,14 +41,14 @@ const Plan = (props) => {
     return (
         <div className={classes.Plan}>
             <h2 className={classes.Plan__heading}>{props.price}{props.price === 'free' ? '' : '$'}</h2>
-            {props.period && <p className={classes.Plan__period}>{props.period}</p>}
+            {props.period && <p className={classes.Plan__period}>{props.price === 'free' ? 'Forever' : props.period}</p>}
             <div className={classes.Plan__details}>
                 {props.currentPlan && <span className={classes.Plan__details__sub}>subscribed</span>}
                 {props.details.map(i => (
                     <p key={i}>{i}</p>
                 ))}
                <React.Fragment>
-                {isAuth && isVerified ? <StripeCheckout
+                {isAuth && isVerified && props.price !== 'free' ? <StripeCheckout
                 opened={e => onOpened(props.stripe_plan_id)}
                 label="Subscribe"
                 name="Beats For Mind" // the pop-in header title

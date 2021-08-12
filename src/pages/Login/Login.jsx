@@ -37,19 +37,19 @@ const Login = () => {
         history.goBack()
     }
 
-    const responseFacebook = (response) => {
-        const token = {
-            access_token: response.accessToken
-        }
-        dispatch(actions.loginFacebookOrGoogle(token, 'facebook'))
-    }
+    // const responseFacebook = (response) => {
+    //     const token = {
+    //         access_token: response.accessToken
+    //     }
+    //     dispatch(actions.loginFacebookOrGoogle(token, 'facebook'))
+    // }
 
-    const responseGoogle = (response) => {
-        const token = {
-            access_token: response.accessToken
-        }
-        dispatch(actions.loginFacebookOrGoogle(token, 'google'))
-    }
+    // const responseGoogle = (response) => {
+    //     const token = {
+    //         access_token: response.accessToken
+    //     }
+    //     dispatch(actions.loginFacebookOrGoogle(token, 'google'))
+    // }
 
     return (
         <div className={classes.Signup}>

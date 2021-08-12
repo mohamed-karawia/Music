@@ -25,10 +25,11 @@ function App() {
   }, [dispatch])
 
   const isAuth = useSelector(state => state.auth.token !== null);
+  // eslint-disable-next-line
   const verified = useSelector(state => state.auth.verify == 'true');
   const token = localStorage.getItem('token');
 
-  axios.defaults.baseURL = 'https://beats-for-minds.herokuapp.com';
+  axios.defaults.baseURL = process.env.REACT_APP_BASE_LINK;
   if (token){
     axios.defaults.headers.common['Authorization'] = `auth ${token}`;
 

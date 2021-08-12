@@ -16,6 +16,7 @@ const Verify = () => {
     const loading =  useSelector(state => state.auth.loading)
     const checkCodeLoading =  useSelector(state => state.auth.checkCodeLoading);
     const checkCodeError = useSelector(state => state.auth.checkCodeError);
+    // eslint-disable-next-line
     const verified = useSelector(state => state.auth.verify == 'true');
 
     const verifyUser = () => {

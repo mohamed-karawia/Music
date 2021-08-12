@@ -53,6 +53,7 @@ const Beats = () => {
     const loading = useSelector(state => state.beats.loading);
     const token = useSelector(state => state.auth.token)
     const isAuth = useSelector(state => state.auth.token !== null);
+    // eslint-disable-next-line
     const verify = useSelector(state => state.auth.verify == 'true')
 
     const changeTab = (tab) => {

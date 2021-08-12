@@ -2,7 +2,14 @@
 
 .Beats{
     display: flex;
-    
+    background-image: linear-gradient(to bottom,rgba(164, 0, 176, 0.507), rgb(97, 3, 104)), url('../../assets/memberbg.png');
+    background-size: cover;
+    background-position: center top;
+
+    h2{
+        color: white;
+    }
+
     &__container{
         width: 100%;
         transition: .3s all;

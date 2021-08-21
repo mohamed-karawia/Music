@@ -58,7 +58,7 @@ const Plan = (props) => {
                 amount={props.price * 100} // cents
                 currency="USD"
                 token={onToken}
-                stripeKey="pk_test_51JLBojIUiHtAtSMpJEiRHTI3V8d07WiLwSOHZIPFmMbQzqkOzrATc3o8Hf8LVALASVuC1o3V7p9pPRhQMBZ26PHV00EebpsM2b"
+                stripeKey={process.env.REACT_APP_STRIPE_PUBLISH_KEY}
             >
                 <button disabled={props.disable} className={props.pro ? classes.pro : ''}>{!props.disable ? 'Subscribe' : 'Subscribed'}</button>
                 </StripeCheckout> : <button onClick={pushToSignup} className={props.pro ? classes.pro : ''}>Subscribe</button>

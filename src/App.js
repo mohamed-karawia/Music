@@ -9,6 +9,7 @@ import Membership from './pages/Membership/Membership';
 import Beats from './pages/Beats/Beats';
 import Policy from './pages/Policy/Policy';
 import Verify from './pages/Verify/Verify';
+import Forget from './pages/Forget/Forget';
 // Axios
 import axios from 'axios';
 // Redux
@@ -37,6 +38,7 @@ function App() {
 
   let routes = (
     <Switch>
+        <Route path="/forget" component={Forget}></Route>
         <Route path="/policy" component={Policy}></Route>
         <Route path="/beats" component={Beats}></Route>
         <Route path="/membership" component={Membership} hideMemberShipImage={false}></Route>

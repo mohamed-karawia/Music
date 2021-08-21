@@ -1,0 +1,36 @@
+@import '../../sass/global.scss';
+
+.Forget{
+    background-image: linear-gradient(rgba(164, 0, 176, 0.507), rgba(164, 0, 176, 0.507)), url('../../assets/loginbg.png');
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 0;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+
+    &__form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 2rem;
+
+        label{
+            color: white;
+            font-size: 1.7rem;
+            margin-bottom: 1rem;
+        }
+
+        input{
+            height: 3rem;
+            min-width: 50rem;
+            margin-bottom: 1rem;
+        }
+
+        button{
+            @include purple-button;
+        }
+    }
+}

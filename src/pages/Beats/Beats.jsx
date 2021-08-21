@@ -116,7 +116,6 @@ const Beats = () => {
         } else if (isAuth && !verify) {
             history.push('/verify')
         } else {
-                console.log('test')
                  axios.get('/stream/download/check')
                 .then(res => {
                     const path = test.src.split('/')
@@ -164,9 +163,9 @@ const Beats = () => {
                             <div className={classes.Beats__container__slider__elements__upper__icons}>
                                 <AiOutlineMenu onClick={e => setIsNavOpen(true)} className={`${classes.Beats__container__slider__elements__upper__icons__icon} ${classes.menu__icon}`} />
                                 <div className={classes.icons__social}>
-                                    <FaInstagram className={classes.Beats__container__slider__elements__upper__icons__icon} />
-                                    <FaTwitter className={classes.Beats__container__slider__elements__upper__icons__icon} />
-                                    <FaFacebookF className={classes.Beats__container__slider__elements__upper__icons__icon} />
+                                    <a href="https://www.instagram.com/beatsforminds/" target="_blank"><FaInstagram className={classes.Beats__container__slider__elements__upper__icons__icon} /></a>
+                                    <a href="https://twitter.com/beatsforminds" target="_blank"><FaTwitter className={classes.Beats__container__slider__elements__upper__icons__icon} /></a>
+                                    <a href="https://www.facebook.com/beatsformind/?ref=bookmarks&paipv=1" target="_blank"><FaFacebookF className={classes.Beats__container__slider__elements__upper__icons__icon} /></a>
                                 </div>
                             </div>
                             <input placeholder="SEARCH" type="text" className={classes.Beats__container__slider__elements__upper__search} value={queries.search} onChange={e => changeSearch(e.target.value)} />

@@ -79,6 +79,7 @@ const Login = () => {
                         />
                         <label className={classes.form__label}>password</label>
                     </div>
+                    <p><Link to="/forget">Forget Password</Link></p>
                     {error && <p className={classes.error}>{error}</p>}
                     <button type="submit" className={classes.button}>{loading ? <Spinner /> : 'Login'}</button>
                     <p>NOT A MEMBER YET? <Link to="/signup">SIGN UP</Link></p>

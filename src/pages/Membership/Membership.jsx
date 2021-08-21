@@ -23,7 +23,6 @@ const Membership = (props) => {
             setUserCurrentPlan(res.data.data.user.plan.plan)
         })
         .catch(err => {
-
         })
     }
 
@@ -31,10 +30,19 @@ const Membership = (props) => {
         axios.post('/user/pay/subscription', data)
         .then(res => {
             getPlans()
-            console.log(res)
         })
         .catch(err => {
-            console.log(err.response)
+            window.alert('Error happened, please try again')
+        })
+    }
+
+    const cancelPlan = () => {
+        axios.post('/user/pay/cancel')
+        .then(res => {
+            getPlans()
+            setUserCurrentPlan('')
+        })
+        .catch(err => {
         })
     }
 
@@ -58,7 +66,7 @@ const Membership = (props) => {
                         getPlans={getPlans} />
                     ))}
                 </div>
-                
+                {userCurrentPlan && <button onClick={cancelPlan} className={classes.Membership__plans__cancel}>Cancel current plan</button>}
             </div>
             <div className={classes.Membership__bg}>
                 <h2>MANY PLANS TO

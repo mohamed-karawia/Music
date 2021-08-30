@@ -58,7 +58,7 @@ const Membership = (props) => {
                         stripe_plan_id={plan._id}
                         price={plan.amount === 1 ? 'free' : plan.amount} 
                         period={plan.name === '3 days plan' ? 'TRIAL FOR 3 Days' : plan.name === 'month plan' ? 'MONTHLY' : 'PER YEAR'} 
-                        details={plan.name === '3 days plan' ? ['Listen to all beats', 'Share beats with friends', 'Download 3 beats per day'] : plan.name === 'month plan' ? ['Listen to all beats', 'Share beats with friends', 'Download unlimited number of beats'] : ['Listen to all beats', 'Share beats with friends', 'Download unlimited number of beats', 'Save 40%']}
+                        details={plan.name === '3 days plan' ? ['Listen to unlimited beats', 'Share beats with friends', 'Download 3 beats per day'] : plan.name === 'month plan' ? ['Listen to unlimited beats', 'Share beats with friends', 'Download unlimited number of beats'] : ['Listen to unlimited beats', 'Share beats with friends', 'Download unlimited number of beats', 'Save 40%']}
                         pro={plan.name === 'year plan' ? true : false}
                         disable={(plan.name === '3 days plan' && isOneTime) || userCurrentPlan}
                         // eslint-disable-next-line
